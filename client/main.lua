@@ -411,23 +411,32 @@ RegisterNetEvent('qb-garages:client:setHouseGarage', function(house, hasKey) -- 
     end
 end)
 
-RegisterNetEvent('qb-garages:client:houseGarageConfig', function(houseGarages)
-    for _, garageConfig in pairs(houseGarages) do
-        local formattedHouseName = string.gsub(string.lower(garageConfig.label), ' ', '')
-        if garageConfig.takeVehicle and garageConfig.takeVehicle.x and garageConfig.takeVehicle.y and garageConfig.takeVehicle.z and garageConfig.takeVehicle.w then
-            Config.Garages[formattedHouseName] = {
-                houseName = house,
-                takeVehicle = vector3(garageConfig.takeVehicle.x, garageConfig.takeVehicle.y, garageConfig.takeVehicle.z),
-                spawnPoint = {
-                    vector4(garageConfig.takeVehicle.x, garageConfig.takeVehicle.y, garageConfig.takeVehicle.z, garageConfig.takeVehicle.w)
-                },
-                label = garageConfig.label,
-                type = 'house',
-                category = Config.VehicleClass['all']
-            }
-        end
+-- RegisterNetEvent('qb-garages:client:houseGarageConfig', function(houseGarages)
+--     for _, garageConfig in pairs(houseGarages) do
+--         local formattedHouseName = string.gsub(string.lower(garageConfig.label), ' ', '')
+--         if garageConfig.takeVehicle and garageConfig.takeVehicle.x and garageConfig.takeVehicle.y and garageConfig.takeVehicle.z and garageConfig.takeVehicle.w then
+--             Config.Garages[formattedHouseName] = {
+--                 houseName = house,
+--                 takeVehicle = vector3(garageConfig.takeVehicle.x, garageConfig.takeVehicle.y, garageConfig.takeVehicle.z),
+--                 spawnPoint = {
+--                     vector4(garageConfig.takeVehicle.x, garageConfig.takeVehicle.y, garageConfig.takeVehicle.z, garageConfig.takeVehicle.w)
+--                 },
+--                 label = garageConfig.label,
+--                 type = 'house',
+--                 category = Config.VehicleClass['all']
+--             }
+--         end
+--     end
+--     TriggerServerEvent('qb-garages:server:syncGarage', Config.Garages)
+-- end)
+
+RegisterNetEvent('qb-garages:client:removeHouseGarage', function(house) -- bcs-housing
+    local formattedHouseName = string.gsub(string.lower(house), ' ', '')
+    local zoneName = 'house_' .. formattedHouseName
+    if ZoneExists(zoneName) then
+        RemoveHouseZone(zoneName)
     end
-    TriggerServerEvent('qb-garages:server:syncGarage', Config.Garages)
+    Config.Garages[formattedHouseName] = nil
 end)
 
 RegisterNetEvent('qb-garages:client:addHouseGarage', function(house, garageInfo) -- event from housing on garage creation
@@ -443,10 +452,6 @@ RegisterNetEvent('qb-garages:client:addHouseGarage', function(house, garageInfo)
         category = Config.VehicleClass['all']
     }
     TriggerServerEvent('qb-garages:server:syncGarage', Config.Garages)
-end)
-
-RegisterNetEvent('qb-garages:client:removeHouseGarage', function(house) -- ps-housing
-    Config.Garages[house] = nil
 end)
 
 -- Handlers
