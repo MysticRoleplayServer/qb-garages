@@ -150,7 +150,6 @@ QBCore.Functions.CreateCallback('qb-garages:server:canDeposit', function(source,
         return
     end
     -- if type == 'house' and not exports['qb-houses']:hasKey(Player.PlayerData.license, Player.PlayerData.citizenid, Config.Garages[garage].houseName) then -- qb-houses
-    -- if type == 'house' and not exports['ps-housing']:IsOwner(source, garage) then -- ps-housing
     if type == 'house' and not exports['bcs_housing']:HasKey(garage, Player.PlayerData.citizenid) then -- bcs-housing
         cb(false)
         return
