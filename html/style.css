@@ -155,7 +155,7 @@ div {
 .finance-info {
     color: #ffffff;
     font-size: 13.3px;
-    background-color: #388e3c;
+    background-color: #375E97;
     margin-top: 10px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -167,7 +167,7 @@ div {
 .drive-btn {
     font-family: "Roboto", sans-serif;
     color: #ffffff;
-    background-color: #388e3c;
+    background-color: #375E97;
     margin-top: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border: none;
@@ -177,7 +177,7 @@ div {
 }
 
 .drive-btn:hover {
-    background-color: #4caf50;
+    background-color: #375E97;
 }
 
 .drive-btn:disabled {
