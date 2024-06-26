@@ -3,7 +3,7 @@ Config.AutoRespawn = true          -- true == stores cars in garage on restart |
 Config.VisuallyDamageCars = true   -- true == damage car on spawn | false == no damage on spawn
 Config.SharedGarages = false       -- true == take any car from any garage | false == only take car from garage stored in
 Config.ClassSystem = false         -- true == restrict vehicles by class | false == any vehicle class in any garage
-Config.FuelResource = 'LegacyFuel' -- supports any that has a GetFuel() and SetFuel() export
+Config.FuelResource = 'cdn-fuel'   -- supports any that has a GetFuel() and SetFuel() export
 Config.Warp = false                -- true == warp player into vehicle | false == vehicle spawns without warping
 
 -- https://docs.fivem.net/natives/?_0x29439776AAA00A62
@@ -230,12 +230,19 @@ Config.Garages = {
     },
     depotLot = {
         label = 'Depot Lot',
-        takeVehicle = vector3(401.76, -1632.57, 29.29),
+        takeVehicle = vector3(-47.09, -1682.98, 29.45),
         spawnPoint = {
-            vector4(396.55, -1643.93, 28.88, 321.91)
+            vector4(-60.97, -1687.08, 29.49, 268.01),
+            vector4(-58.51, -1684.49, 29.49, 264.26),
+            vector4(-55.52, -1681.47, 29.49, 256.88),
+            vector4(-52.25, -1677.39, 29.37, 244.02),
+            vector4(-53.14, -1694.28, 29.49, 354.59),
+            vector4(-49.92, -1692.78, 29.49, 1.16),
+            vector4(-45.94, -1690.78, 29.41, 17.4),
+            vector4(-41.42, -1688.5, 29.38, 10.06)
         },
         showBlip = true,
-        blipName = 'Depot Lot',
+        blipName = 'Mosleys Depot Lot',
         blipNumber = 68,
         blipColor = 3,
         type = 'depot',
